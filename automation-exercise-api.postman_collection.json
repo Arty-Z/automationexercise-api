@@ -1,0 +1,311 @@
+{
+  "info": {
+    "name": "AutomationExercise API Collection",
+    "description": "Collection of API requests for AutomationExercise API testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12345678"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get Products List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has products array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('products');",
+                  "    pm.expect(jsonData.products).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 3000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/productsList",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productsList"
+              ]
+            },
+            "description": "Retrieves a list of all available products"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Product - Shirt",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has products array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('products');",
+                  "    pm.expect(jsonData.products).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test(\"Products contain search term\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    jsonData.products.forEach(function(product) {",
+                  "        pm.expect(product.name.toLowerCase()).to.include('shirt');",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "search_product",
+                  "value": "shirt",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/searchProduct",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "searchProduct"
+              ]
+            },
+            "description": "Search for products containing 'shirt'"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Product - Jeans",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has products array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('products');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "search_product",
+                  "value": "jeans",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/searchProduct",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "searchProduct"
+              ]
+            },
+            "description": "Search for products containing 'jeans'"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Product - Empty",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has products array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('products');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "search_product",
+                  "value": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/searchProduct",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "searchProduct"
+              ]
+            },
+            "description": "Search with empty search term (negative test)"
+          },
+          "response": []
+        }
+      ],
+      "description": "Product-related API endpoints"
+    },
+    {
+      "name": "Brands",
+      "item": [
+        {
+          "name": "Get Brands List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has brands array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('brands');",
+                  "    pm.expect(jsonData.brands).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test(\"Brands have required fields\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    jsonData.brands.forEach(function(brand) {",
+                  "        pm.expect(brand).to.have.property('id');",
+                  "        pm.expect(brand).to.have.property('brand');",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/brandsList",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "brandsList"
+              ]
+            },
+            "description": "Retrieves a list of all available brands"
+          },
+          "response": []
+        }
+      ],
+      "description": "Brand-related API endpoints"
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://automationexercise.com",
+      "type": "string"
+    }
+  ]
+}

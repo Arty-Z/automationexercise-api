@@ -1,0 +1,36 @@
+{
+  "name": "automationexercise-api",
+  "version": "1.0.0",
+  "description": "API functional and performance testing framework for AutomationExercise using Playwright and k6",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:products": "playwright test productsList.spec.ts",
+    "test:search": "playwright test searchProduct.spec.ts",
+    "test:brands": "playwright test brandsList.spec.ts",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "k6:demo": "k6 run k6-tests/demo-test.js",
+    "k6:load": "k6 run k6-tests/load-test.js",
+    "k6:stress": "k6 run k6-tests/load-test.js",
+    "k6:report": "k6 run --out html=k6-reports/demo-test-report.html k6-tests/load-test.js"
+  },
+  "keywords": [
+    "playwright",
+    "k6",
+    "api-testing",
+    "performance-testing",
+    "typescript",
+    "automation"
+  ],
+  "author": "SDET Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.9.0",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {}
+}
