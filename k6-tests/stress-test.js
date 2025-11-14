@@ -79,7 +79,7 @@ export default function () {
   errorRate.add(!productsCheck);
   
   // Short pause between requests (simulating user think time)
-  sleep(0.5);
+  sleep(random(5, 15));
 
   // Test 2: POST Search Product API
   const searchTerm = searchTerms[Math.floor(Math.random() * searchTerms.length)];
